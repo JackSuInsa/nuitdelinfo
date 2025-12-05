@@ -17,5 +17,8 @@
     "package.json": "^2.0.1",
     "sqlite3": "^5.1.7"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
 }
