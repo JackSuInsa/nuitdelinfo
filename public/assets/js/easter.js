@@ -34,19 +34,19 @@
             
             // Container téléphone
             const phoneContainer = document.createElement('div');
-            phoneContainer.style.cssText = 'position:relative;animation:phoneVibrate 0.1s infinite,phoneFloat 3s ease-in-out infinite;max-width:90vw;max-height:90vh;';
+            phoneContainer.style.cssText = 'position:relative;animation:phoneVibrate 0.1s infinite,phoneFloat 3s ease-in-out infinite;max-width:95vw;max-height:95vh;';
             
             // Écran du téléphone
             const phone = document.createElement('div');
-            phone.style.cssText = 'background:linear-gradient(145deg, #1a1a1a, #0a0a0a);border-radius:40px;padding:15px;box-shadow:0 30px 90px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.1);border:3px solid #333;position:relative;width:min(400px, 85vw);height:min(700px, 85vh);display:flex;flex-direction:column;';
+            phone.style.cssText = 'background:linear-gradient(145deg, #1a1a1a, #0a0a0a);border-radius:clamp(25px, 4vw, 40px);padding:clamp(10px, 1.5vw, 15px);box-shadow:0 30px 90px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.1);border:3px solid #333;position:relative;width:min(380px, 90vw);height:min(600px, 85vh);display:flex;flex-direction:column;';
             
             // Encoche du téléphone
             const notch = document.createElement('div');
-            notch.style.cssText = 'background:#000;width:120px;height:20px;border-radius:0 0 20px 20px;margin:0 auto 10px;box-shadow:inset 0 -2px 5px rgba(255,255,255,0.1);flex-shrink:0;';
+            notch.style.cssText = 'background:#000;width:clamp(80px, 20vw, 120px);height:clamp(15px, 2vh, 20px);border-radius:0 0 20px 20px;margin:0 auto clamp(5px, 1vh, 10px);box-shadow:inset 0 -2px 5px rgba(255,255,255,0.1);flex-shrink:0;';
             
             // Écran intérieur
             const screen = document.createElement('div');
-            screen.style.cssText = 'background:#000;border-radius:30px;padding:20px;box-shadow:inset 0 0 30px rgba(255,0,255,0.3);position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;justify-content:center;';
+            screen.style.cssText = 'background:#000;border-radius:clamp(20px, 3vw, 30px);padding:clamp(10px, 1.5vh, 15px);box-shadow:inset 0 0 30px rgba(255,0,255,0.3);position:relative;overflow:hidden;flex:1;display:flex;flex-direction:column;justify-content:center;';
             
             // Effet de reflet sur l'écran
             const glare = document.createElement('div');
@@ -220,11 +220,11 @@
         
         // Container du visage
         const faceContainer = document.createElement('div');
-        faceContainer.style.cssText = 'text-align:center;padding:20px;';
+        faceContainer.style.cssText = 'text-align:center;padding:clamp(5px, 1vh, 12px);display:flex;flex-direction:column;justify-content:space-between;height:100%;';
         
         // Grande photo circulaire
         const bigFace = document.createElement('div');
-        bigFace.style.cssText = 'width:clamp(200px, 50vw, 280px);height:clamp(200px, 50vw, 280px);margin:20px auto;border-radius:50%;overflow:hidden;border:5px solid rgba(255,0,255,0.5);box-shadow:0 0 40px rgba(255,0,255,0.8);position:relative;';
+        bigFace.style.cssText = 'width:clamp(120px, 28vw, 200px);height:clamp(120px, 28vw, 200px);margin:clamp(5px, 1vh, 15px) auto;border-radius:50%;overflow:hidden;border:clamp(2px, 0.4vw, 4px) solid rgba(255,0,255,0.5);box-shadow:0 0 40px rgba(255,0,255,0.8);position:relative;flex-shrink:0;';
         const faceImg = document.createElement('img');
         faceImg.src = '/assets/img/thomas_pork.jpg';
         faceImg.style.cssText = 'width:100%;height:100%;object-fit:cover;transition:transform 0.3s;';
@@ -232,11 +232,11 @@
         
         // Bulle de dialogue
         const speechBubble = document.createElement('div');
-        speechBubble.style.cssText = 'background:#fff;color:#000;padding:15px 25px;border-radius:25px;margin:20px auto;max-width:80%;font-size:clamp(1em, 3.5vw, 1.5em);font-weight:bold;position:relative;box-shadow:0 10px 30px rgba(0,0,0,0.3);transform:scale(0);transition:transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);';
+        speechBubble.style.cssText = 'background:#fff;color:#000;padding:clamp(8px, 1.5vh, 12px) clamp(12px, 2.5vw, 20px);border-radius:clamp(12px, 2.5vw, 20px);margin:clamp(8px, 1.5vh, 15px) auto;max-width:85%;font-size:clamp(0.8em, 2.5vw, 1.1em);font-weight:bold;position:relative;box-shadow:0 10px 30px rgba(0,0,0,0.3);transform:scale(0);transition:transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);flex-shrink:0;';
         
         // Petit triangle de la bulle
         const bubbleTail = document.createElement('div');
-        bubbleTail.style.cssText = 'position:absolute;top:-15px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:20px solid #fff;';
+        bubbleTail.style.cssText = 'position:absolute;top:clamp(-10px, -1.5vh, -12px);left:50%;transform:translateX(-50%);width:0;height:0;border-left:clamp(10px, 1.5vw, 12px) solid transparent;border-right:clamp(10px, 1.5vw, 12px) solid transparent;border-bottom:clamp(12px, 2vh, 15px) solid #fff;';
         speechBubble.appendChild(bubbleTail);
         
         const speechText = document.createElement('span');
@@ -245,7 +245,7 @@
         
         // Boutons d'interaction (style Talking Ben)
         const buttonContainer = document.createElement('div');
-        buttonContainer.style.cssText = 'display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap;padding:0 10px;';
+        buttonContainer.style.cssText = 'display:flex;justify-content:center;gap:clamp(6px, 1.2vw, 10px);margin-top:clamp(5px, 1vh, 12px);flex-wrap:wrap;padding:0 clamp(5px, 1vw, 8px);flex-shrink:0;';
         
         const buttons = [
             { text: '👍 Oui', action: () => showPhrase(0) },
@@ -257,7 +257,7 @@
         buttons.forEach(btn => {
             const button = document.createElement('button');
             button.textContent = btn.text;
-            button.style.cssText = 'background:linear-gradient(145deg, #667eea, #764ba2);color:white;border:none;padding:10px 15px;border-radius:20px;font-size:clamp(0.8em, 2.5vw, 1em);cursor:pointer;transition:all 0.3s;box-shadow:0 5px 15px rgba(102,126,234,0.4);';
+            button.style.cssText = 'background:linear-gradient(145deg, #667eea, #764ba2);color:white;border:none;padding:clamp(6px, 1.2vh, 10px) clamp(10px, 2vw, 15px);border-radius:clamp(12px, 2vw, 18px);font-size:clamp(0.7em, 1.8vw, 0.85em);cursor:pointer;transition:all 0.3s;box-shadow:0 5px 15px rgba(102,126,234,0.4);min-width:clamp(60px, 12vw, 80px);';
             button.onmouseover = () => {
                 button.style.transform = 'translateY(-3px)';
                 button.style.boxShadow = '0 8px 20px rgba(102,126,234,0.6)';
@@ -276,7 +276,7 @@
         // Bouton raccrocher
         const hangupBtn = document.createElement('button');
         hangupBtn.textContent = '📵 Raccrocher';
-        hangupBtn.style.cssText = 'background:#e74c3c;color:white;border:none;padding:12px 30px;border-radius:25px;font-size:clamp(0.9em, 2.5vw, 1.1em);cursor:pointer;margin-top:20px;transition:all 0.3s;box-shadow:0 5px 15px rgba(231,76,60,0.4);display:block;margin-left:auto;margin-right:auto;';
+        hangupBtn.style.cssText = 'background:#e74c3c;color:white;border:none;padding:clamp(8px, 1.5vh, 12px) clamp(18px, 3.5vw, 30px);border-radius:clamp(18px, 2.5vw, 22px);font-size:clamp(0.75em, 2vw, 0.95em);cursor:pointer;margin-top:clamp(8px, 1.5vh, 15px);transition:all 0.3s;box-shadow:0 5px 15px rgba(231,76,60,0.4);display:block;margin-left:auto;margin-right:auto;flex-shrink:0;';
         hangupBtn.onmouseover = () => {
             hangupBtn.style.transform = 'scale(1.05)';
             hangupBtn.style.boxShadow = '0 8px 20px rgba(231,76,60,0.6)';
