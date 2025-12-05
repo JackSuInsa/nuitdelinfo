@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 Visualiseur Audio Rétro 🎵</title>
+    <link rel="stylesheet" href="/assets/css/visualizer.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">🎵 VISUALISEUR AUDIO RÉTRO 🎵</h1>
+            <p class="subtitle">Revivez la magie des années 2000 !</p>
+        </header>
+
+        <div class="visualizer-container">
+            <canvas id="visualizerCanvas"></canvas>
+            <div class="overlay-text" id="overlayText">🎶</div>
+        </div>
+
+        <div class="controls-panel">
+            <div class="audio-controls">
+                <input type="file" id="audioFile" accept="audio/*" style="display: none;">
+                <button class="btn btn-upload" id="uploadBtn">
+                    📁 Charger un fichier audio
+                </button>
+                <button class="btn btn-mic" id="micBtn">
+                    🎤 Utiliser le microphone
+                </button>
+            </div>
+
+            <div class="audio-player" id="audioPlayer" style="display: none;">
+                <audio id="audio" controls></audio>
+                <div class="track-info" id="trackInfo">Aucune piste chargée</div>
+            </div>
+
+            <div class="visualization-modes">
+                <label>Mode de visualisation :</label>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="bars">Barres</button>
+                    <button class="mode-btn" data-mode="circle">Cercle</button>
+                    <button class="mode-btn" data-mode="wave">Onde</button>
+                    <button class="mode-btn" data-mode="spiral">Spirale</button>
+                    <button class="mode-btn" data-mode="particles">Particules</button>
+                    <button class="mode-btn" data-mode="retro">Rétro</button>
+                </div>
+            </div>
+
+            <div class="color-controls">
+                <label>
+                    <input type="checkbox" id="rainbowMode" checked> Mode Arc-en-ciel
+                </label>
+                <label>
+                    <input type="checkbox" id="pulseMode" checked> Pulsations
+                </label>
+                <label>
+                    <input type="checkbox" id="trailMode"> Effet de traînée
+                </label>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <p>💡 Astuce : Chargez votre musique préférée ou utilisez votre micro pour voir les visuels danser !</p>
+        </div>
+    </div>
+
+    <script src="/assets/js/visualizer.js"></script>
+</body>
+</html>

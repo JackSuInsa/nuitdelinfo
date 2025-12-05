@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Quizz de la résistance numérique</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="assets/css/index.css">
+    </head>
+    <body>
+        <header>
+            <section>
+                <a href="/index">
+                    <img src="assets/img/thomas_pork.jpg" alt="Logo du jeu" width="150">
+                </a>
+                <h1>Bienvenue sur Nuit de l'info : Quizz de la résistance numérique !</h1>
+            </section>          
+        </header>
+        <div id="lancement_jeu">
+            <button id="start_game" onclick="displayGame()">Lancer le jeu</button>
+        </div>
+        <div id="jeu" style="display: none;">    
+            <div id="display_question">
+                <h1 id="question_text">Voici une question</h1>
+            </div>
+            <section id="section_questions">
+                <button id="reponse1" onclick="checkReponse(1)">Question 1
+                </button>
+                <button id="reponse2" onclick="checkReponse(2)">Question 2
+                </button>
+                <button id="reponse3" onclick="checkReponse(3)">Question 3
+                </button>
+            </section>
+            <div id="feedback" style="margin-top: 20px; font-size: 1.2em; font-weight: bold; min-height: 30px;"></div>
+        </div>
+    </body>
+    <footer>
+        <script src="assets/js/jquery.min.js"></script>
+        <script>
+            let nbquestions = 0;
+            let numReponseBonne = undefined;
+            let score = 0;
+
+            function displayGame() {
+                document.getElementById("lancement_jeu").style.display = "none";
+                document.getElementById("jeu").style.display = "block";
+                // Reset game state
+                nbquestions = 0;
+                score = 0;
+                $('#section_questions').show();
+                $('#feedback').text('');
+                getQuestion();
+            }
+
+            function getQuestion() {
+                if (nbquestions < 5) {
+                    $.ajax({
+                        url: '/quizz/getQuestion',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(response) {
+                            $('#question_text').html(response.question);
+                            $('#reponse1').html(response.reponse1);
+                            $('#reponse2').html(response.reponse2);
+                            $('#reponse3').html(response.reponse3);
+                            numReponseBonne = response.numReponseBonne;
+                            
+                            // Clear feedback from previous question
+                            $('#feedback').text('');
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Erreur lors de la récupération de la question :', error);
+                        }
+                    });
+                } else {
+                    // End of game
+                    $('#question_text').text("Jeu terminé !");
+                    $('#section_questions').hide();
+                    $('#feedback').css('color', 'black').html("Votre score est de " + score + " sur 5.<br><button onclick='location.reload()'>Rejouer</button>");
+                }
+            }
+
+            function checkReponse(numReponse) {
+                let feedbackText = "";
+                let color = "";
+                
+                if (numReponse === numReponseBonne) {
+                    score += 1;
+                    feedbackText = "Bonne réponse !";
+                    color = "green";
+                } else {
+                    let bonneReponseText = $('#reponse' + numReponseBonne).text();
+                    feedbackText = "Mauvaise réponse ! La bonne réponse était : " + bonneReponseText;
+                    color = "red";
+                }
+                
+                $('#feedback').css('color', color).text(feedbackText);
+                
+                nbquestions++;
+                // Wait 5 seconds before loading next question so user can see the feedback
+                setTimeout(getQuestion, 5000);
+            }
+        </script>
+        <script src="assets/js/easter.js"></script>
+    </footer>
+</html>
